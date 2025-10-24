@@ -1,0 +1,824 @@
+[
+  {
+    "id": "e-021",
+    "type": "error",
+    "code": -9,
+    "title": "El parámetro 'monto' es inválido.",
+    "imageUrl": "media/21.png",
+    "description": "El sistema no reconoce el monto enviado en la transacción.",
+    "causes": [
+      "El monto enviado es 0, nulo o no es un número.",
+      "Se está enviando un monto con formato incorrecto (ej. con '$' o comas)."
+    ],
+    "solutions": [
+      "Verificar que se esté enviando un monto válido y numérico.",
+      "Asegurarse de que el monto sea mayor a 0.",
+      "Escalar a desarrollo si el error proviene de la App/Web."
+    ],
+    "tags": ["monto", "invalido", "parametro", "-9", "api"]
+  },
+  {
+    "id": "e-044",
+    "type": "error",
+    "code": -1,
+    "title": "Error de paquete, no se puede subscribir solo (depends on primary offering)",
+    "imageUrl": "media/34.png",
+    "description": "No se ejecuto la recarga, motivo: Offering ... can not be subscribed singly since it depends on the primary offering.",
+    "causes": [
+      "Se intentó comprar un paquete (offering) que es un 'add-on' o beneficio.",
+      "El usuario no tiene el paquete o plan primario requerido para este beneficio."
+    ],
+    "solutions": [
+      "Explicar al cliente que el paquete seleccionado no se puede comprar solo.",
+      "Sugerir al cliente que primero compre el plan base o el paquete primario requerido."
+    ],
+    "tags": ["offering", "paquete", "dependencia", "primary", "-1", "recarga"]
+  },
+  {
+    "id": "e-002",
+    "type": "error",
+    "code": 2,
+    "title": "No se envía la cabecera de autorización o el token enviado es incorrecto",
+    "imageUrl": "media/2.png",
+    "description": "Error de autenticación de la API. El sistema no reconoce al usuario.",
+    "causes": [
+      "El token de sesión del usuario expiró.",
+      "La App o Web no están enviando la información de autorización."
+    ],
+    "solutions": [
+      "Pedir al usuario que cierre sesión y vuelva a iniciar sesión.",
+      "Si es un error persistente, reportar a desarrollo (posible error de la App)."
+    ],
+    "tags": ["token", "autorizacion", "auth", "cabecera", "2", "api"]
+  },
+  {
+    "id": "e-026",
+    "type": "error",
+    "code": 2,
+    "title": "Referencia de cuenta invalida",
+    "imageUrl": "media/26.png",
+    "description": "El número de cuenta o referencia para un pago de servicio no es válido.",
+    "causes": [
+      "El usuario escribió mal el número de referencia/cuenta.",
+      "El número de cuenta no corresponde al servicio seleccionado (ej. referencia de CFE en Telmex)."
+    ],
+    "solutions": [
+      "Pedir al cliente que verifique que el número de referencia/cuenta sea correcto.",
+      "Asegurarse de que la referencia coincida con el servicio que está intentando pagar."
+    ],
+    "tags": ["referencia", "cuenta", "invalida", "pago", "servicio", "2"]
+  },
+  {
+    "id": "e-011",
+    "type": "error",
+    "code": 5,
+    "title": "Servicio en proceso, porfavor espera una respuesta",
+    "imageUrl": "media/12.png",
+    "description": "Se detectó una transacción previa para el mismo número que aún no se completa.",
+    "causes": [
+      "El usuario hizo clic varias veces en 'Recargar'.",
+      "La transacción anterior sigue en estado 'Pendiente' con el proveedor."
+    ],
+    "solutions": [
+      "Pedir al usuario que espere 1 o 2 minutos y verifique su saldo o el estado de la recarga.",
+      "Informar que ya hay un proceso en curso para ese número y monto."
+    ],
+    "tags": ["proceso", "pendiente", "espera", "5", "duplicada"]
+  },
+  {
+    "id": "e-004",
+    "type": "error",
+    "code": 8,
+    "title": "Teléfono incorrecto o pertenece a otro operador",
+    "imageUrl": "media/5.png",
+    "description": "El número de teléfono no es válido o no pertenece a la compañía seleccionada.",
+    "causes": [
+      "El número proporcionado no es válido.",
+      "El número pertenece a una compañía (carrier) que no soportamos.",
+      "El cliente intentó una portabilidad que no se completó correctamente."
+    ],
+    "solutions": [
+      "1. Validar a qué compañía pertenece el teléfono. (Soporte puede usar la página del IFT para esto).",
+      "2. **CASO BAIT/ALTAN:** Si IFT muestra 'Altan' o 'Walmart', es genérico. Soporte debe verificar el número *internamente* en el portal oficial de Bait.",
+      "3. Si el portal de Bait lo rechaza y el cliente insiste, preguntar: '¿Hizo un cambio de compañía (portabilidad) recientemente?'",
+      "4. Explicar que la portabilidad pudo no completarse o se hizo con otra compañía virtual (MVNO).",
+      "**IMPORTANTE: No mandar enlaces de portales oficiales (IFT, Bait, etc.) al cliente.**"
+    ],
+    "tags": ["telefono", "invalido", "dn", "carrier", "operador", "bait", "ift", "portabilidad", "8"]
+  },
+  {
+    "id": "e-014",
+    "type": "error",
+    "code": 8,
+    "title": "Bolsa ws no configurada, contactar a soporte",
+    "imageUrl": "media/15.png",
+    "description": "Error interno. El sistema no encuentra la configuración para este producto.",
+    "causes": [
+      "El producto o servicio no está configurado correctamente en el panel de administrador.",
+      "Falta una configuración del lado del proveedor (WebService)."
+    ],
+    "solutions": [
+      "Este error debe ser escalado.",
+      "Tomar nota del producto, monto y cajero.",
+      "Reportar a Soporte Nivel 2 o Desarrollo para que revisen la configuración de la 'Bolsa ws'."
+    ],
+    "tags": ["bolsa", "ws", "configuracion", "soporte", "8", "admin"]
+  },
+  {
+    "id": "e-013",
+    "type": "error",
+    "code": 10,
+    "title": "Error de conexión, reintente en unos minutos",
+    "imageUrl": "media/14.png",
+    "description": "Fallo temporal en la comunicación con el proveedor del servicio.",
+    "causes": [
+      "El usuario tiene una conexión a internet inestable.",
+      "Saturación temporal en los servidores del proveedor (Telcel, CFE, etc.)."
+    ],
+    "solutions": [
+      "Pedir al usuario que verifique su conexión a internet (datos o WiFi).",
+      "Sugerir que lo intente de nuevo en 1 o 2 minutos.",
+      "Si el error persiste, podría ser un fallo del proveedor."
+    ],
+    "tags": ["conexion", "internet", "reintente", "10", "timeout"]
+  },
+  {
+    "id": "e-016",
+    "type": "error",
+    "code": 11,
+    "title": "Error genérico del proveedor (Código: 11)",
+    "imageUrl": "media/11.png",
+    "description": "Respuesta genérica del carrier. El proveedor reportó un error no especificado.",
+    "causes": [
+      "Error temporal no catalogado por parte del proveedor."
+    ],
+    "solutions": [
+      "Pedir al usuario que intente de nuevo más tarde.",
+      "Si el error es masivo (muchos reportes), escalar a Nivel 2 para revisar con el proveedor."
+    ],
+    "tags": ["proveedor", "carrier", "generico", "11"]
+  },
+  {
+    "id": "e-039",
+    "type": "error",
+    "code": 13,
+    "title": "No se puede realizar la recarga de este dn.",
+    "imageUrl": "media/33.png",
+    "description": "El proveedor está rechazando específicamente este número de teléfono.",
+    "causes": [
+      "El número puede estar en una 'lista negra' del proveedor.",
+      "El número tiene un plan o estado que no permite recargas (ej. plan de pospago, línea suspendida)."
+    ],
+    "solutions": [
+      "Verificar que el número sea de prepago.",
+      "Pedir al cliente que verifique el estado de su línea directamente con su compañía."
+    ],
+    "tags": ["dn", "recarga", "rechazado", "13", "linea"]
+  },
+  {
+    "id": "e-043",
+    "type": "error",
+    "code": 15,
+    "title": "Número telefónico no activo o no tiene una oferta inicial.",
+    "imageUrl": "media/37.png",
+    "description": "La línea del cliente no está activa o no ha sido activada con un paquete inicial.",
+    "causes": [
+      "Es una SIM nueva que nunca ha sido activada.",
+      "La línea fue suspendida por falta de pago o inactividad."
+    ],
+    "solutions": [
+      "Preguntar al cliente si su SIM es nueva.",
+      "Si es nueva, debe primero activarla (a veces con una recarga en Oxxo o con el proveedor).",
+      "Si no es nueva, debe contactar a su proveedor para verificar el estado de la línea."
+    ],
+    "tags": ["activo", "oferta", "inicial", "sim", "15", "activacion"]
+  },
+  {
+    "id": "e-028",
+    "type": "error",
+    "code": 24,
+    "title": "Error del facturador, intente de nuevo porfavor",
+    "imageUrl": "media/28.png",
+    "description": "El sistema del proveedor del servicio (CFE, Telmex, etc.) reportó un error.",
+    "causes": [
+      "El sistema del 'facturador' (ej. CFE) está temporalmente fuera de servicio.",
+      "Mantenimiento por parte del proveedor del servicio."
+    ],
+    "solutions": [
+      "Informar al cliente que es un error temporal del proveedor del servicio.",
+      "Sugerir intentar el pago de nuevo en 15-30 minutos."
+    ],
+    "tags": ["facturador", "servicio", "pago", "cfe", "telmex", "24"]
+  },
+  {
+    "id": "e-005",
+    "type": "error",
+    "code": 35,
+    "title": "Número de teléfono invalido",
+    "imageUrl": "media/6.png",
+    "description": "El número de teléfono no es válido o no pertenece a la compañía seleccionada.",
+    "causes": [
+      "El número proporcionado no es válido.",
+      "El número pertenece a una compañía (carrier) que no soportamos.",
+      "El cliente intentó una portabilidad que no se completó correctamente."
+    ],
+    "solutions": [
+      "1. Validar a qué compañía pertenece el teléfono. (Soporte puede usar la página del IFT para esto).",
+      "2. **CASO BAIT/ALTAN:** Si IFT muestra 'Altan' o 'Walmart', es genérico. Soporte debe verificar el número *internamente* en el portal oficial de Bait.",
+      "3. Si el portal de Bait lo rechaza y el cliente insiste, preguntar: '¿Hizo un cambio de compañía (portabilidad) recientemente?'",
+      "4. Explicar que la portabilidad pudo no completarse o se hizo con otra compañía virtual (MVNO).",
+      "**IMPORTANTE: No mandar enlaces de portales oficiales (IFT, Bait, etc.) al cliente.**"
+    ],
+    "tags": ["telefono", "invalido", "dn", "carrier", "operador", "bait", "ift", "portabilidad", "35"]
+  },
+  {
+    "id": "e-007",
+    "type": "error",
+    "code": 35,
+    "title": "NúmeroInválido",
+    "imageUrl": "media/8.png",
+    "description": "El número de teléfono no es válido o no pertenece a la compañía seleccionada.",
+    "causes": [
+      "El número proporcionado no es válido.",
+      "El número pertenece a una compañía (carrier) que no soportamos.",
+      "El cliente intentó una portabilidad que no se completó correctamente."
+    ],
+    "solutions": [
+      "1. Validar a qué compañía pertenece el teléfono. (Soporte puede usar la página del IFT para esto).",
+      "2. **CASO BAIT/ALTAN:** Si IFT muestra 'Altan' o 'Walmart', es genérico. Soporte debe verificar el número *internamente* en el portal oficial de Bait.",
+      "3. Si el portal de Bait lo rechaza y el cliente insiste, preguntar: '¿Hizo un cambio de compañía (portabilidad) recientemente?'",
+      "4. Explicar que la portabilidad pudo no completarse o se hizo con otra compañía virtual (MVNO).",
+      "**IMPORTANTE: No mandar enlaces de portales oficiales (IFT, Bait, etc.) al cliente.**"
+    ],
+    "tags": ["telefono", "invalido", "dn", "carrier", "operador", "bait", "ift", "portabilidad", "35"]
+  },
+  {
+    "id": "e-025",
+    "type": "error",
+    "code": 40,
+    "title": "ErrorGeneral",
+    "imageUrl": "media/25.png",
+    "description": "Error genérico no catalogado.",
+    "causes": [
+      "Fallo temporal del sistema o del proveedor."
+    ],
+    "solutions": [
+      "Pedir al usuario que intente de nuevo más tarde.",
+      "Si el error persiste, solicitar más detalles (número, monto, hora) y escalar a Nivel 2."
+    ],
+    "tags": ["general", "error", "40"]
+  },
+  {
+    "id": "e-017",
+    "type": "error",
+    "code": 41,
+    "title": "Referencia inválida",
+    "imageUrl": "media/17.png",
+    "description": "La referencia para el pago de servicio es incorrecta.",
+    "causes": [
+      "El usuario escribió mal el número de referencia/cuenta.",
+      "La referencia no tiene el formato esperado por el facturador."
+    ],
+    "solutions": [
+      "Pedir al cliente que verifique que el número de referencia/cuenta sea correcto.",
+      "Asegurarse de que esté ingresando todos los dígitos."
+    ],
+    "tags": ["referencia", "invalida", "pago", "servicio", "41"]
+  },
+  {
+    "id": "e-022",
+    "type": "error",
+    "code": 51,
+    "title": "Error de Comunicacion, por favor intente de nuevo.",
+    "imageUrl": "media/22.png",
+    "description": "Fallo temporal en la comunicación con el proveedor del servicio.",
+    "causes": [
+      "El usuario tiene una conexión a internet inestable.",
+      "Saturación temporal en los servidores del proveedor."
+    ],
+    "solutions": [
+      "Pedir al usuario que verifique su conexión a internet (datos o WiFi).",
+      "Sugerir que lo intente de nuevo en 1 o 2 minutos.",
+      "Si el error persiste, podría ser un fallo del proveedor."
+    ],
+    "tags": ["comunicacion", "internet", "reintente", "51", "timeout"]
+  },
+  {
+    "id": "e-027",
+    "type": "error",
+    "code": 51,
+    "title": "Transacción Fracasada (Error 51)",
+    "imageUrl": "media/27.png",
+    "description": "La transacción no pudo completarse por un error de comunicación.",
+    "causes": [
+      "Fallo temporal en la comunicación con el proveedor del servicio.",
+      "El proveedor rechazó la transacción por un motivo no especificado."
+    ],
+    "solutions": [
+      "Pedir al usuario que intente de nuevo en unos minutos.",
+      "Verificar que los datos (número, monto, referencia) sean correctos."
+    ],
+    "tags": ["transaccion", "fracasada", "51", "comunicacion"]
+  },
+  {
+    "id": "e-029",
+    "type": "error",
+    "code": 51,
+    "title": "Bad Gateway (Error 51)",
+    "imageUrl": "media/36.png",
+    "description": "Error de comunicación entre nuestros servidores y los del proveedor.",
+    "causes": [
+      "El servidor del proveedor (gateway) está caído o no responde."
+    ],
+    "solutions": [
+      "Este es un error temporal del lado del proveedor.",
+      "Informar al cliente que el servicio del proveedor está fallando.",
+      "Sugerir que intente de nuevo en 15-30 minutos."
+    ],
+    "tags": ["bad", "gateway", "51", "servidor", "proveedor"]
+  },
+  {
+    "id": "e-010",
+    "type": "error",
+    "code": 53,
+    "title": "Producto inactivo, contacte a soporte",
+    "imageUrl": "media/11.png",
+    "description": "El producto (paquete, recarga, servicio) que el cliente intenta comprar está desactivado.",
+    "causes": [
+      "El producto fue desactivado en el panel de administrador.",
+      "El producto ya no es ofrecido por el proveedor."
+    ],
+    "solutions": [
+      "Este error debe ser escalado.",
+      "Informar a Soporte Nivel 2 o Administradores para que revisen el estado de ese producto."
+    ],
+    "tags": ["producto", "inactivo", "desactivado", "soporte", "53"]
+  },
+  {
+    "id": "e-006",
+    "type": "error",
+    "code": 83,
+    "title": "INVALID_TELEPHONE (DN Inválido)",
+    "imageUrl": "media/7.png",
+    "description": "El número de teléfono no es válido o no pertenece a la compañía seleccionada.",
+    "causes": [
+      "El número proporcionado no es válido.",
+      "El número pertenece a una compañía (carrier) que no soportamos.",
+      "El cliente intentó una portabilidad que no se completó correctamente."
+    ],
+    "solutions": [
+      "1. Validar a qué compañía pertenece el teléfono. (Soporte puede usar la página del IFT para esto).",
+      "2. **CASO BAIT/ALTAN:** Si IFT muestra 'Altan' o 'Walmart', es genérico. Soporte debe verificar el número *internamente* en el portal oficial de Bait.",
+      "3. Si el portal de Bait lo rechaza y el cliente insiste, preguntar: '¿Hizo un cambio de compañía (portabilidad) recientemente?'",
+      "4. Explicar que la portabilidad pudo no completarse o se hizo con otra compañía virtual (MVNO).",
+      "**IMPORTANTE: No mandar enlaces de portales oficiales (IFT, Bait, etc.) al cliente.**"
+    ],
+    "tags": ["telefono", "invalido", "dn", "carrier", "operador", "bait", "ift", "portabilidad", "83"]
+  },
+  {
+    "id": "e-008",
+    "type": "error",
+    "code": 83,
+    "title": "DN Invalido",
+    "imageUrl": "media/9.png",
+    "description": "El número de teléfono (DN) no es válido o no pertenece a la compañía seleccionada.",
+    "causes": [
+      "El número proporcionado no es válido.",
+      "El número pertenece a una compañía (carrier) que no soportamos.",
+      "El cliente intentó una portabilidad que no se completó correctamente."
+    ],
+    "solutions": [
+      "1. Validar a qué compañía pertenece el teléfono. (Soporte puede usar la página del IFT para esto).",
+      "2. **CASO BAIT/ALTAN:** Si IFT muestra 'Altan' o 'Walmart', es genérico. Soporte debe verificar el número *internamente* en el portal oficial de Bait.",
+      "3. Si el portal de Bait lo rechaza y el cliente insiste, preguntar: '¿Hizo un cambio de compañía (portabilidad) recientemente?'",
+      "4. Explicar que la portabilidad pudo no completarse o se hizo con otra compañía virtual (MVNO).",
+      "**IMPORTANTE: No mandar enlaces de portales oficiales (IFT, Bait, etc.) al cliente.**"
+    ],
+    "tags": ["telefono", "invalido", "dn", "carrier", "operador", "bait", "ift", "portabilidad", "83"]
+  },
+  {
+    "id": "e-009",
+    "type": "error",
+    "code": 99,
+    "title": "Mantenimiento en progreso, intente más tarde",
+    "imageUrl": "media/10.png",
+    "description": "El sistema (nuestro o del proveedor) está en mantenimiento programado.",
+    "causes": [
+      "Estamos actualizando nuestros servidores.",
+      "El proveedor (Telcel, CFE, etc.) está en su ventana de mantenimiento."
+    ],
+    "solutions": [
+      "Informar al cliente que el servicio está en mantenimiento temporal.",
+      "Sugerir que lo intente de nuevo en 30 minutos o 1 hora.",
+      "Verificar en el canal de 'Notificaciones' si hay un mantenimiento programado."
+    ],
+    "tags": ["mantenimiento", "progreso", "99", "servidor", "actualizacion"]
+  },
+  {
+    "id": "e-041",
+    "type": "error",
+    "code": 121,
+    "title": "Theres is a pending transaction",
+    "imageUrl": "media/35.png",
+    "description": "Hay una transacción pendiente. Es similar al error 5.",
+    "causes": [
+      "El usuario hizo clic varias veces en 'Recargar'.",
+      "La transacción anterior sigue en estado 'Pendiente' con el proveedor."
+    ],
+    "solutions": [
+      "Pedir al usuario que espere 1 o 2 minutos y verifique su saldo o el estado de la recarga.",
+      "Informar que ya hay un proceso en curso para ese número y monto."
+    ],
+    "tags": ["pending", "transaction", "pendiente", "121", "duplicada"]
+  },
+  {
+    "id": "e-042",
+    "type": "error",
+    "code": 143,
+    "title": "SIM no existe en sistema",
+    "imageUrl": "media/36.png",
+    "description": "El número de la SIM (ICCID) no se encuentra en la base de datos del proveedor.",
+    "causes": [
+      "El usuario escribió mal el número de la SIM.",
+      "La SIM es de otra compañía.",
+      "La SIM nunca fue activada."
+    ],
+    "solutions": [
+      "Pedir al cliente que verifique el número de la SIM (ICCID) que está ingresando.",
+      "Asegurarse de que la SIM sea de la compañía correcta (ej. Bait, Diri, etc.)."
+    ],
+    "tags": ["sim", "iccid", "no existe", "143", "activacion"]
+  },
+  {
+    "id": "e-012",
+    "type": "error",
+    "code": 151,
+    "title": "No se ha podido realizar la transacción, intentar más tarde",
+    "imageUrl": "media/13.png",
+    "description": "Error genérico de transacción fallida.",
+    "causes": [
+      "Fallo temporal del proveedor.",
+      "Error de comunicación."
+    ],
+    "solutions": [
+      "Pedir al usuario que intente de nuevo en 1 o 2 minutos.",
+      "Verificar que los datos (número, monto) sean correctos."
+    ],
+    "tags": ["transaccion", "fallida", "151", "reintentar"]
+  },
+  {
+    "id": "e-023",
+    "type": "error",
+    "code": 201,
+    "title": "Monto de cobro incorrecto.",
+    "imageUrl": "media/23.png",
+    "description": "El monto enviado para el pago de servicio no es válido.",
+    "causes": [
+      "El monto es menor al mínimo permitido.",
+      "El monto es mayor al máximo permitido.",
+      "El monto no coincide con el adeudo (en caso de pagos fijos)."
+    ],
+    "solutions": [
+      "Verificar el monto mínimo y máximo para ese servicio.",
+      "Asegurarse de que el monto sea correcto."
+    ],
+    "tags": ["monto", "cobro", "incorrecto", "201", "pago", "servicio"]
+  },
+  {
+    "id": "e-024",
+    "type": "error",
+    "code": 203,
+    "title": "Referencia incorrecta.",
+    "imageUrl": "media/24.png",
+    "description": "La referencia para el pago de servicio es incorrecta.",
+    "causes": [
+      "El usuario escribió mal el número de referencia/cuenta.",
+      "La referencia no tiene el formato esperado por el facturador."
+    ],
+    "solutions": [
+      "Pedir al cliente que verifique que el número de referencia/cuenta sea correcto.",
+      "Asegurarse de que esté ingresando todos los dígitos."
+    ],
+    "tags": ["referencia", "incorrecta", "pago", "servicio", "203"]
+  },
+  {
+    "id": "e-020",
+    "type": "error",
+    "code": 207,
+    "title": "Proveedor del servicio en mantenimiento. Intente más tarde.",
+    "imageUrl": "media/20.png",
+    "description": "El proveedor del servicio (CFE, Telmex, etc.) está en mantenimiento.",
+    "causes": [
+      "El proveedor (facturador) está en su ventana de mantenimiento."
+    ],
+    "solutions": [
+      "Informar al cliente que el servicio del proveedor está en mantenimiento.",
+      "Sugerir que intente de nuevo en 30 minutos o 1 hora."
+    ],
+    "tags": ["proveedor", "mantenimiento", "servicio", "207", "facturador"]
+  },
+  {
+    "id": "e-019",
+    "type": "error",
+    "code": 400,
+    "title": "Invalid request. Parameter 'billing_reference' invalid.",
+    "imageUrl": "media/12.png",
+    "description": "Error con la respuesta del servidor: '23109937' is not properly formatted.",
+    "causes": [
+      "La referencia de pago ('billing_reference') se envió con un formato incorrecto.",
+      "La referencia contiene caracteres no válidos o no tiene la longitud esperada."
+    ],
+    "solutions": [
+      "Pedir al cliente que verifique la referencia de pago.",
+      "Asegurarse de que no tenga espacios, guiones o caracteres especiales (a menos que el servicio lo requiera)."
+    ],
+    "tags": ["billing_reference", "referencia", "formato", "400", "api", "request"]
+  },
+  {
+    "id": "e-030",
+    "type": "error",
+    "code": 400,
+    "title": "Aun no contamos con ese MVNO en nuestro catalogo",
+    "imageUrl": "media/30.png",
+    "description": "El usuario intenta recargar una compañía que no está en nuestra lista.",
+    "causes": [
+      "El usuario seleccionó un carrier (ej. 'Telcel') pero el número es de un MVNO (Operador Móvil Virtual) que no soportamos.",
+      "La compañía es nueva y no ha sido agregada."
+    ],
+    "solutions": [
+      "Informar al cliente que esa compañía (MVNO) no está disponible en nuestro catálogo.",
+      "Verificar que el número corresponda a la compañía que seleccionó."
+    ],
+    "tags": ["mvno", "catalogo", "compañia", "operador", "400"]
+  },
+  {
+    "id": "e-001",
+    "type": "error",
+    "code": 403,
+    "title": "Error country-GT-403",
+    "imageUrl": "media/1.png",
+    "description": "Ocurre cuando el usuario intenta acceder desde una región no permitida.",
+    "causes": [
+      "Configuración regional incorrecta en el perfil del usuario.",
+      "Restricción de acceso por país (Bloqueo de IP).",
+      "El usuario está usando una VPN que lo saca de la región permitida."
+    ],
+    "solutions": [
+      "Verificar en el perfil del usuario que su 'País de facturación' sea correcto.",
+      "Pedir al usuario que deshabilite cualquier VPN.",
+      "Si el problema persiste, escalar a Soporte Nivel 2 para revisar el bloqueo de IP."
+    ],
+    "tags": ["gt-403", "country", "region", "bloqueo", "login", "403", "vpn"]
+  },
+  {
+    "id": "e-031",
+    "type": "error",
+    "code": 500,
+    "title": "Token invalido (Error 500)",
+    "imageUrl": "media/31.png",
+    "description": "Error interno del servidor al validar la sesión del usuario.",
+    "causes": [
+      "El token de sesión expiró o se corrompió.",
+      "Error temporal del servidor de autenticación."
+    ],
+    "solutions": [
+      "Pedir al usuario que cierre sesión y vuelva a iniciar sesión.",
+      "Si el error persiste, pedir que borre caché/datos de la app."
+    ],
+    "tags": ["token", "invalido", "500", "servidor", "sesion"]
+  },
+  {
+    "id": "e-018",
+    "type": "error",
+    "code": 1998,
+    "title": "Recarga duplicada",
+    "imageUrl": "media/18.png",
+    "description": "Recarga duplicada del día de hoy con teléfono X y con monto Y, por favor revisar tus ventas.",
+    "causes": [
+      "El usuario intentó hacer la misma recarga (mismo número, mismo monto) en un periodo de tiempo corto."
+    ],
+    "solutions": [
+      "Informar al usuario que el sistema detectó esta recarga como duplicada.",
+      "Pedirle que revise su historial de ventas o el saldo del cliente para confirmar si la primera recarga pasó.",
+      "Sugerir esperar 5-10 minutos antes de reintentar si la primera falló."
+    ],
+    "tags": ["duplicada", "recarga", "ventas", "1998"]
+  },
+  {
+    "id": "e-003",
+    "type": "error",
+    "code": null,
+    "title": "El email o número de Whatsapp/SMS ya se encuentra registrado",
+    "imageUrl": "media/4.png",
+    "description": "El email, Whatsapp o teléfono ya existe registrado en cajero con id X.",
+    "causes": [
+      "El usuario ya tiene una cuenta con esos datos.",
+      "El usuario escribió mal sus datos e coincidió con los de otro cliente.",
+      "Un cajero anterior fue eliminado pero sus datos no se liberaron."
+    ],
+    "solutions": [
+      "Preguntar al usuario si ya tenía una cuenta (tal vez olvidó la contraseña).",
+      "Sugerir que intente recuperar su contraseña.",
+      "Si el usuario insiste en que es nuevo, escalar a Nivel 2 para investigar el ID de cajero que reporta el error."
+    ],
+    "tags": ["email", "whatsapp", "sms", "registrado", "existe", "duplicado", "cajero"]
+  },
+  {
+    "id": "e-015",
+    "type": "error",
+    "code": null,
+    "title": "Respuesta del carrier",
+    "imageUrl": "media/16.png",
+    "description": "Respuesta genérica del carrier. El proveedor reportó un error no especificado.",
+    "causes": [
+      "Error temporal no catalogado por parte del proveedor (Telcel, AT&T, etc.)."
+    ],
+    "solutions": [
+      "Pedir al usuario que intente de nuevo más tarde.",
+      "Si el error es masivo (muchos reportes), escalar a Nivel 2 para revisar con el proveedor."
+    ],
+    "tags": ["respuesta", "carrier", "generico", "proveedor"]
+  },
+  {
+    "id": "e-032",
+    "type": "error",
+    "code": null,
+    "title": "TypeError: “Inserte el código...”: type “String” is not a subtype of type list",
+    "imageUrl": "media/39.png",
+    "description": "Error interno de la aplicación (web o móvil) al procesar datos.",
+    "causes": [
+      "El navegador o la App tienen datos cacheados corruptos.",
+      "El usuario está usando una versión de la App o navegador muy antigua.",
+      "Un error temporal en la carga de datos del servidor."
+    ],
+    "solutions": [
+      "1. Pedir al cliente que actualice la página (Ctrl+F5) o cierre y vuelva a abrir la App.",
+      "2. Pedir que borre la caché del navegador o los datos de la App.",
+      "3. Asegurarse de que esté usando la última versión de la App desde la Play Store / App Store.",
+      "4. (Opcional) Preguntar qué versión de Windows o sistema operativo tiene."
+    ],
+    "tags": ["typeerror", "cache", "datos", "app", "web", "actualizar", "programacion"]
+  },
+  {
+    "id": "e-033",
+    "type": "error",
+    "code": null,
+    "title": "No es posible cargar la información",
+    "imageUrl": "media/40.png",
+    "description": "Error genérico al intentar obtener datos del servidor.",
+    "causes": [
+      "Conexión a internet inestable del usuario.",
+      "Timeout del servidor (tardó mucho en responder).",
+      "Error temporal de la base de datos."
+    ],
+    "solutions": [
+      "Pedir al usuario que verifique su conexión a internet.",
+      "Sugerir que deslice hacia abajo para 'Refrescar' la pantalla.",
+      "Cerrar y volver a abrir la App."
+    ],
+    "tags": ["cargar", "informacion", "conexion", "timeout", "refrescar"]
+  },
+  {
+    "id": "e-034",
+    "type": "error",
+    "code": null,
+    "title": "Transacción fracasada (Genérico)",
+    "imageUrl": "media/41.png",
+    "description": "La transacción no pudo completarse por un motivo no especificado.",
+    "causes": [
+      "Fallo temporal del proveedor.",
+      "Error de comunicación."
+    ],
+    "solutions": [
+      "Pedir al usuario que intente de nuevo en unos minutos.",
+      "Verificar que los datos (número, monto, referencia) sean correctos."
+    ],
+    "tags": ["transaccion", "fracasada", "generico"]
+  },
+  {
+    "id": "e-035",
+    "type": "error",
+    "code": null,
+    "title": "Ocurrió un error al guardar. Intenta de nuevo",
+    "imageUrl": "media/42.png",
+    "description": "Error genérico al intentar guardar cambios (ej. en perfil, configuración).",
+    "causes": [
+      "Fallo de conexión al enviar los datos.",
+      "Error temporal en la base de datos."
+    ],
+    "solutions": [
+      "Pedir al usuario que verifique su conexión e intente guardar de nuevo.",
+      "Si el error persiste, pedir que cierre sesión y vuelva a entrar.",
+      "Reportar al operativo."
+    ],
+    "tags": ["guardar", "error", "perfil", "configuracion"]
+  },
+  {
+    "id": "e-036",
+    "type": "error",
+    "code": null,
+    "title": "Error: (Saldo plataforma bloqueado por administrador, contacte a soporte)",
+    "imageUrl": "media/43.png",
+    "description": "La cuenta del cajero ha sido bloqueada a nivel de plataforma.",
+    "causes": [
+      "Bloqueo automatico por inactividad de ventas",
+      "Algun motivo administrativo"
+    ],
+    "solutions": [
+      "Si el bloqueo es por una razón más inportante por causas administrativas consultar primero con administración",
+      "Revisar en el back al tendero y revisar en el log la causa.",
+      "Informar al cajero el motivo del bloqueo si es por causa de inactividad si es un caso administrativo consultar primero a administración"
+    ],
+    "tags": ["saldo", "plataforma", "bloqueado", "admin", "soporte", "cajero"]
+  },
+  {
+    "id": "e-037",
+    "type": "error",
+    "code": null,
+    "title": "Error: (Saldo comisión bloqueado por administrador, contacte a soporte)",
+    "imageUrl": "media/44.png",
+    "description": "La bolsa de comisiones del cajero ha sido bloqueada.",
+    "causes": [
+      "Bloqueo automatico por inactividad de ventas",
+      "Algun motivo administrativo"
+    ],
+    "solutions": [
+      "Si el bloqueo es por una razón más inportante por causas administrativas consultar primero con administración",
+      "Revisar en el back al tendero y revisar en el log la causa.",
+      "Informar al cajero el motivo del bloqueo si es por causa de inactividad si es un caso administrativo consultar primero a administración"
+    ],
+    "tags": ["saldo", "comision", "bloqueado", "admin", "soporte", "cajero"]
+  },
+  {
+    "id": "e-038",
+    "type": "error",
+    "code": null,
+    "title": "Error \"Uuppss...\" (Página de error HTML)",
+    "imageUrl": "media/45.png",
+    "description": "El usuario ve una página de error HTML genérica, comúnmente al intentar subir un archivo.",
+    "causes": [
+      "El usuario intenta subir una foto (comprobante, foto) que es demasiado pesada (alta resolución).",
+      "La conexión del usuario es muy lenta y la subida falla (timeout)."
+    ],
+    "solutions": [
+      "1. Sugerir al cliente reducir el tamaño de la foto.",
+      "2. **Método fácil:** Pedirle que se envíe la foto a sí mismo por WhatsApp y que luego intente subir esa imagen (WhatsApp la comprime automáticamente).",
+      "3. Sugerir que use la opción de 'Tomar foto ahora' (cámara directa de la App) en lugar de subirla desde su galería."
+    ],
+    "tags": ["upload", "subir", "archivo", "pesado", "foto", "comprobante", "whatsapp", "uuppss", "html"]
+  },
+  {
+    "id": "e-040",
+    "type": "error",
+    "code": null,
+    "title": "No se ejecuto la recarga, motivo: The subscriber does not exist",
+    "imageUrl": "media/34.png",
+    "description": "El proveedor informa que el número de teléfono no existe en su sistema.",
+    "causes": [
+      "El usuario escribió mal el número de teléfono.",
+      "La línea fue dada de baja o nunca existió.",
+      "El número no pertenece a la compañía seleccionada."
+    ],
+    "solutions": [
+      "Pedir al cliente que verifique que el número de teléfono esté escrito correctamente.",
+      "Confirmar con el cliente que su línea esté activa y sea de la compañía correcta."
+    ],
+    "tags": ["subscriber", "does not exist", "no existe", "dn", "recarga"]
+  },
+  {
+    "id": "e-045",
+    "type": "error",
+    "code": null,
+    "title": "No es posible cargar la información (Duplicado)",
+    "imageUrl": "media/40.png",
+    "description": "Error genérico al intentar obtener datos del servidor.",
+    "causes": [
+      "Conexión a internet inestable del usuario.",
+      "Timeout del servidor (tardó mucho en responder).",
+      "Error temporal de la base de datos."
+    ],
+    "solutions": [
+      "Pedir al usuario que verifique su conexión a internet.",
+      "Sugerir que deslice hacia abajo para 'Refrescar' la pantalla.",
+      "Cerrar y volver a abrir la App."
+    ],
+    "tags": ["cargar", "informacion", "conexion", "timeout", "refrescar"]
+  },
+  {
+    "id": "e-046",
+    "type": "error",
+    "code": null,
+    "title": "Ocurrió un error al guardar. Intenta de nuevo (Duplicado)",
+    "imageUrl": "media/42.png",
+    "description": "Error genérico al intentar guardar cambios (ej. en perfil, configuración).",
+    "causes": [
+      "Fallo de conexión al enviar los datos.",
+      "Error temporal en la base de datos."
+    ],
+    "solutions": [
+      "Pedir al usuario que verifique su conexión e intente guardar de nuevo.",
+      "Si el error persiste, pedir que cierre sesión y vuelva a entrar."
+    ],
+    "tags": ["guardar", "error", "perfil", "configuracion"]
+  }
+]

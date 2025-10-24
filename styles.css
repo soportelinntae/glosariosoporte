@@ -1,0 +1,306 @@
+/* --- Reseteo Básico y Globales --- */
+:root {
+    --color-primario: #f16200;
+    --color-fondo: #f0f2f5;
+    --color-tarjeta: #ffffff;
+    --color-texto: #1a3669;
+    --color-texto-secundario: #555;
+    --color-borde: #dee2e6;
+    --radio-borde: 8px;
+    --sombra: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* --- Header y Navegación --- */
+header {
+    background-color: var(--color-tarjeta);
+    padding: 20px;
+    border-radius: var(--radio-borde);
+    margin-bottom: 20px;
+    box-shadow: var(--sombra);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--color-primario);
+}
+
+header nav {
+    display: flex;
+    gap: 15px;
+}
+
+header nav a {
+    text-decoration: none;
+    color: var(--color-texto-secundario);
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+header nav a:hover {
+    background-color: #f0f0f0;
+}
+
+header nav a.active {
+    background-color: var(--color-primario);
+    color: white;
+}
+
+/* --- Contenido Principal --- */
+main {
+    background-color: var(--color-tarjeta);
+    padding: 25px;
+    border-radius: var(--radio-borde);
+    box-shadow: var(--sombra);
+}
+
+/* --- Buscador --- */
+.search-box {
+    margin-bottom: 25px;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-borde);
+    box-sizing: border-box; /* Para que el padding no afecte el ancho */
+}
+
+/* --- Resultados de Búsqueda y FAQs --- */
+#resultsContainer .placeholder,
+#faqContainer .placeholder {
+    color: #888;
+    text-align: center;
+    padding: 20px;
+}
+
+.result-item, .faq-item {
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-borde);
+    margin-bottom: 15px;
+    overflow: hidden; /* Para contener el header */
+}
+
+.result-header, .faq-header {
+    padding: 15px 20px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid var(--color-borde);
+}
+
+.result-header h3, .faq-header h3 {
+    margin: 0;
+    display: inline-block;
+}
+
+.result-code {
+    font-family: monospace;
+    font-size: 0.9rem;
+    background-color: #e0e0e0;
+    color: #444;
+    padding: 3px 6px;
+    border-radius: 4px;
+    margin-left: 10px;
+    font-weight: 600;
+}
+
+.result-body, .faq-body {
+    padding: 20px;
+}
+
+.result-body h4, .faq-body h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--color-primario);
+    border-bottom: 2px solid var(--color-primario);
+    display: inline-block;
+    padding-bottom: 2px;
+}
+
+.result-body ul, .faq-body ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.result-body li, .faq-body li {
+    margin-bottom: 8px;
+}
+
+.result-tags {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--color-borde);
+}
+
+.tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    background-color: var(--color-fondo);
+    color: var(--color-texto-secundario);
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+/* --- Formulario de Reporte --- */
+#reportForm {
+    display: grid;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group select,
+.form-group textarea {
+    padding: 10px;
+    border: 1px solid var(--color-borde);
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+#reportForm button {
+    background-color: var(--color-primario);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    padding: 15px;
+    border-radius: var(--radio-borde);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#reportForm button:hover {
+    background-color: #0056b3;
+}
+
+/* --- Estilos para el Título de Resultados --- */
+h3.results-title {
+    font-size: 1.3rem;
+    color: var(--color-texto-secundario);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--color-fondo);
+}
+
+/* Ajuste al placeholder de la página de búsqueda */
+#resultsContainer .placeholder {
+    color: #888;
+    text-align: center;
+    padding: 40px 20px; /* Más espacio */
+    font-size: 1.1rem;
+}
+.result-image-container {
+    /* Eliminamos el 'width: 100%;' de aquí */
+    max-width: 500px; /* <- NUEVO: Ancho máximo fijo para la imagen */
+    max-height: 400px; 
+    overflow: hidden; 
+    border-radius: 6px;
+    margin: 0 auto 15px auto; /* <- MODIFICADO: Centra la imagen y le da margen inferior */
+    border: 1px solid var(--color-borde);
+    background-color: var(--color-fondo); 
+}
+
+.result-image-container img {
+    width: 100%;       /* <- Mantiene el 100% *del contenedor*, que ahora tiene max-width */
+    height: auto;      
+    display: block;    
+    object-fit: contain; 
+    max-height: 400px; 
+}
+/* --- RESPONSIVIDAD MÓVIL --- */
+/* Estas reglas se activan solo en pantallas de 600px o menos */
+
+@media (max-width: 600px) {
+
+    /* 1. Ajustamos el contenedor y márgenes generales */
+    .container {
+        margin: 0;
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box; /* Asegura que el padding no desborde */
+    }
+
+    /* 2. Arreglamos el Header y el Navbar (el problema principal) */
+    header {
+        flex-direction: column;  /* Apila el Título y el Nav (uno arriba del otro) */
+        align-items: flex-start; /* Alinea todo a la izquierda */
+        gap: 20px;               /* Da espacio entre el título y el nav */
+    }
+
+    header nav {
+        flex-direction: column; /* Apila los links del nav */
+        width: 100%;            /* Hace que el nav ocupe todo el ancho */
+        gap: 10px;              /* Espacio entre los botones */
+    }
+
+    header nav a {
+        padding: 12px;
+        text-align: center;     /* Centra el texto de los links */
+        background-color: var(--color-fondo); /* Fondo para que parezcan botones */
+    }
+
+    header nav a.active {
+        /* Mantiene el estilo del botón activo */
+        background-color: var(--color-primario);
+    }
+
+    /* 3. Ajustamos el contenido principal */
+    main {
+        padding: 15px;
+    }
+
+    /* 4. Hacemos que la imagen del error sea más pequeña en móvil */
+    .result-image-container,
+    .result-image-container img {
+        max-height: 250px;
+    }
+
+    /* 5. Ajustamos los títulos y texto */
+    header h1 {
+        font-size: 1.4rem;
+    }
+
+    h3.results-title {
+        font-size: 1.2rem;
+    }
+
+    .result-header h3, .faq-header h3 {
+        font-size: 1.1rem;
+    }
+}

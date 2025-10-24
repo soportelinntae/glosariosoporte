@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soporte Glosario</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="media/favico.png">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Base de Conocimiento</h1>
+            <nav>
+                <a href="index.html">Buscar Errores</a>
+                <a href="faq.html">FAQ</a>
+                <a href="reportar.html" class="active">Reportar Nuevo Error</a>
+            </nav>
+        </header>
+        
+        <main>
+            <h2>Reportar un Error o FAQ Nuevo</h2>
+            <p>Usa este formulario para documentar un error que no esté en la base.</p>
+            
+            <form id="reportForm">
+                <div class="form-group">
+                    <label for="reportType">Tipo:</label>
+                    <select id="reportType">
+                        <option value="error">Error</option>
+                        <option value="faq">Pregunta Frecuente (FAQ)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="reportCode">Código de Error (Ej. user-login-500):</label>
+                    <input type="text" id="reportCode" placeholder="(Opcional si es FAQ)">
+                </div>
+                
+                <div class="form-group">
+                    <label for="reportTitle">Título / Pregunta:</label>
+                    <input type="text" id="reportTitle" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="reportDescription">Descripción (Opcional):</label>
+                    <textarea id="reportDescription" rows="2"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="reportCauses">Posibles Causas (Una por línea):</label>
+                    <textarea id="reportCauses" rows="4"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="reportSolutions">Soluciones (Una por línea):</label>
+                    <textarea id="reportSolutions" rows="4" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="reportTags">Etiquetas (Separadas por comas, ej. pago, tarjeta, error):</label>
+                    <input type="text" id="reportTags" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="reportScreenshot">Subir Captura (Opcional):</label>
+                    <input type="file" id="reportScreenshot" accept="image/*">
+                </div>
+                
+                <button type="submit">Guardar Reporte</button>
+            </form>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
