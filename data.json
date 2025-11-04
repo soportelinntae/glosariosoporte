@@ -119,9 +119,8 @@
       "Falta una configuración del lado del proveedor (WebService)."
     ],
     "solutions": [
-      "Este error debe ser escalado.",
-      "Tomar nota del producto, monto y cajero.",
-      "Reportar a Soporte Nivel 2 o Desarrollo para que revisen la configuración de la 'Bolsa ws'."
+      "Este error debe ser escalado a administraión (Majo, Espe, Ibett)."
+      
     ],
     "tags": ["bolsa", "ws", "configuracion", "soporte", "8", "admin"]
   },
@@ -201,14 +200,14 @@
     "code": 24,
     "title": "Error del facturador, intente de nuevo porfavor",
     "imageUrl": "media/28.png",
-    "description": "El sistema del proveedor del servicio (CFE, Telmex, etc.) reportó un error.",
+    "description": "El sistema del proveedor del servicio  reportó un error.",
     "causes": [
-      "El sistema del 'facturador' (ej. CFE) está temporalmente fuera de servicio.",
+      "El sistema de MTCENTER esta presentando varios problemas de intermitencia.",
       "Mantenimiento por parte del proveedor del servicio."
     ],
     "solutions": [
-      "Informar al cliente que es un error temporal del proveedor del servicio.",
-      "Sugerir intentar el pago de nuevo en 15-30 minutos."
+      "Informar al cliente que se esta presentando una intermitencia.",
+      "Sugerir intentar el pago de nuevo en 30-60 minutos."
     ],
     "tags": ["facturador", "servicio", "pago", "cfe", "telmex", "24"]
   },
@@ -418,6 +417,27 @@
     "tags": ["mantenimiento", "progreso", "99", "servidor", "actualizacion"]
   },
   {
+    "id": "e-048",
+    "type": "error",
+    "code": 117,
+    "title": "Theres is a pending transaction",
+    "imageUrl": "media/32.png",
+    "description": "Este error puede ser por varios factores.",
+    "causes": [
+      "El usuario esta intentando hacer una recarga de internet o a una de telefonía o viceversa.",
+      "El telefóno no es compatible",
+      "Chip no se encuentra activo o esta dado de baja.",
+      "La transacción anterior sigue en estado 'Pendiente' con el proveedor."
+    ],
+    "solutions": [
+      "Revisar los datos de la venta y validar que el número y monto sean correctos.",
+      "Revisar si el número pertenece a esa compañía. (Soporte puede usar la página del IFT para esto).",
+      "Si todo lo anterior ya fue revisado y no se encuetran una anomalía preguntar si el chip ya fue activado correctamente.",
+      "en dado caso que todas las causas ya fueron descartadas escalar directemente con el soporte de la compañía correspondiente para que brinden mayor información al respecto."
+    ],
+    "tags": ["pending", "transaction", "pendiente", "121", "duplicada"]
+  },
+  {
     "id": "e-041",
     "type": "error",
     "code": 121,
@@ -513,11 +533,11 @@
     "imageUrl": "media/20.png",
     "description": "El proveedor del servicio (CFE, Telmex, etc.) está en mantenimiento.",
     "causes": [
-      "El proveedor (facturador) está en su ventana de mantenimiento."
+      "El proveedor (facturador) está en su ventana de mantenimiento o presenta intermitencia temporal."
     ],
     "solutions": [
       "Informar al cliente que el servicio del proveedor está en mantenimiento.",
-      "Sugerir que intente de nuevo en 30 minutos o 1 hora."
+      "Sugerir que intente de nuevo en 30 minutos o 1 hora, tu como soporte estar monitoreando que las ventas esten saliendo con éxito."
     ],
     "tags": ["proveedor", "mantenimiento", "servicio", "207", "facturador"]
   },
@@ -547,11 +567,12 @@
     "description": "El usuario intenta recargar una compañía que no está en nuestra lista.",
     "causes": [
       "El usuario seleccionó un carrier (ej. 'Telcel') pero el número es de un MVNO (Operador Móvil Virtual) que no soportamos.",
+      "MTC no lo tiene disponible.",
       "La compañía es nueva y no ha sido agregada."
     ],
     "solutions": [
-      "Informar al cliente que esa compañía (MVNO) no está disponible en nuestro catálogo.",
-      "Verificar que el número corresponda a la compañía que seleccionó."
+      "Informar al cliente que esa compañía o monto no esta disponible en nuestro catalogo."
+      
     ],
     "tags": ["mvno", "catalogo", "compañia", "operador", "400"]
   },
@@ -580,9 +601,9 @@
     "code": 500,
     "title": "Token invalido (Error 500)",
     "imageUrl": "media/31.png",
-    "description": "Error interno del servidor al validar la sesión del usuario.",
+    "description": "Error interno generalmente por parte de PAGAPHONE.",
     "causes": [
-      "El token de sesión expiró o se corrompió.",
+      "Este es un error por parte proveedor por lo que hay que escalarlo y reportar con soporte de proveedor.",
       "Error temporal del servidor de autenticación."
     ],
     "solutions": [
