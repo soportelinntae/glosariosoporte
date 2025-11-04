@@ -26,11 +26,12 @@
     "description": "No se ejecuto la recarga, motivo: Offering ... can not be subscribed singly since it depends on the primary offering.",
     "causes": [
       "Se intentó comprar un paquete (offering) que es un 'add-on' o beneficio.",
-      "El usuario no tiene el paquete o plan primario requerido para este beneficio."
+      "El usuario no tiene el paquete o plan primario debido a que aun no se ha activado el chip o tarjeta SIM."
     ],
     "solutions": [
-      "Explicar al cliente que el paquete seleccionado no se puede comprar solo.",
-      "Sugerir al cliente que primero compre el plan base o el paquete primario requerido."
+      "Preguntar al cliente si la recarga de un paquete no esta vigente aun o si su chip ya fue activado, igualmente como rol soporte investigar previamente en el reporte de ventas si se han realizado ventas a ese número con éxito.",
+      "Sugerir al cliente que pregunte al dueño de la línea de asegurar que no tenga un paquete activo o si su línea ya habia sido anteriormente activado correctamente con éxito.",
+      "Si en dado caso que el cliente menciona que su línea ya fue activada correctamente y no tiene ningún paquete activo, comentarle que es necesario que contacte a su proveedor para que le brinde mayor información al respecto ya que es un tema que compete directamente con la compañía."
     ],
     "tags": ["offering", "paquete", "dependencia", "primary", "-1", "recarga"]
   },
@@ -171,7 +172,8 @@
     ],
     "solutions": [
       "Verificar que el número sea de prepago.",
-      "Pedir al cliente que verifique el estado de su línea directamente con su compañía."
+      "Pedir al cliente que verifique el estado de su línea directamente con su compañía.",
+      "validar correctamente el número telefónico con la compañía correspondiente."
     ],
     "tags": ["dn", "recarga", "rechazado", "13", "linea"]
   },
@@ -333,7 +335,8 @@
     "solutions": [
       "Este es un error temporal del lado del proveedor.",
       "Informar al cliente que el servicio del proveedor está fallando.",
-      "Sugerir que intente de nuevo en 15-30 minutos."
+      "Sugerir que intente de nuevo en 15-30 minutos.",
+      "Escalar al operativo Linntae para más información y brindarle una respuesta al cliente"
     ],
     "tags": ["bad", "gateway", "51", "servidor", "proveedor"]
   },
@@ -350,7 +353,7 @@
     ],
     "solutions": [
       "Este error debe ser escalado.",
-      "Informar a Soporte Nivel 2 o Administradores para que revisen el estado de ese producto."
+      "Informar a Soporte o Administradores (Majo, Espe, Ibett) para que revisen el estado de ese producto."
     ],
     "tags": ["producto", "inactivo", "desactivado", "soporte", "53"]
   },
@@ -480,7 +483,8 @@
     ],
     "solutions": [
       "Verificar el monto mínimo y máximo para ese servicio.",
-      "Asegurarse de que el monto sea correcto."
+      "Asegurarse de que el monto sea correcto.",
+      "si la plataforma no muestra el monto en automatico, pedir al cliente que ingrese el monto que se muestra en su comprobante"
     ],
     "tags": ["monto", "cobro", "incorrecto", "201", "pago", "servicio"]
   },
@@ -820,5 +824,41 @@
       "Si el error persiste, pedir que cierre sesión y vuelva a entrar."
     ],
     "tags": ["guardar", "error", "perfil", "configuracion"]
+  },
+  {
+    "id": "e-047",
+    "type": "error",
+    "code": null,
+    "title": "No suceptible a recargas",
+    "imageUrl": "media/46.png",
+    "description": "El teléfono ingresado no es susceptible a recargas.",
+    "causes": [
+      "Eliminación de número.",
+      "No activado",
+      "El número presenta una deuda pendiente por pagar."
+    ],
+    "solutions": [
+      "Pedir al usuario validar con el dueño de la línea si no presenta alguna de las causas anteriormente mencionadas",
+      "Sugerir y comentarles validar directamente a soporte técnico del operador correspondiente."
+    ],
+    "tags": ["cargar", "informacion", "conexion", "timeout", "refrescar"]
+  },
+  {
+    "id": "faq-007",
+    "type": "faq",
+    "code": null,
+    "title": "¿Dónde puedo descargar mi factura?",
+    "imageUrl": "",
+    "description": "Pasos para que el cliente descargue su factura fiscal.",
+    "causes": [],
+    "solutions": [
+      "1. Iniciar sesión en el portal web.",
+      "2. Ir a la sección de 'Mi Cuenta' o 'Perfil'.",
+      "3. Buscar la pestaña de 'Historial de Pagos' o 'Facturación'.",
+      "4. Hacer clic en el ícono de PDF o 'Descargar factura' junto al pago correspondiente."
+    ],
+    "tags": ["factura", "pdf", "fiscal", "cuenta", "pagos"]
   }
+
+  
 ]
