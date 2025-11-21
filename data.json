@@ -584,16 +584,80 @@
     "imageUrl": "media/1.png",
     "description": "Ocurre cuando el usuario intenta acceder desde una región no permitida.",
     "causes": [
-      "Configuración regional incorrecta en el perfil del usuario.",
+      "Configuración regional incorrecta en el perfil del usuario o cajero.",
       "Restricción de acceso por país (Bloqueo de IP).",
+      "El usuario cuenta con un proxy de seguridad o tambien tiene un proveedor de internet extranjero.",
       "El usuario está usando una VPN que lo saca de la región permitida."
     ],
+    
     "solutions": [
-      "Verificar en el perfil del usuario que su 'País de facturación' sea correcto.",
+      "Verificar en el perfil del usuario o cajero que su 'País de facturación' sea correcto.",
       "Pedir al usuario que deshabilite cualquier VPN.",
-      "Si el problema persiste, escalar a Soporte Nivel 2 para revisar el bloqueo de IP."
+      "Pedirle que intente usar una red de internet del país (México)."
     ],
     "tags": ["gt-403", "country", "region", "bloqueo", "login", "403", "vpn"]
+  },
+  {
+    "id": "e-047",
+    "type": "error",
+    "code": 403,
+    "title": "DioError [bad response]: Error country-US-403",
+    "imageUrl": "media/47.png",
+    "description": "Ocurre cuando el usuario intenta acceder desde una región no permitida.",
+    "causes": [
+      "Configuración regional incorrecta en el perfil del usuario o cajero.",
+      "Restricción de acceso por país (Bloqueo de IP).",
+      "El usuario cuenta con un proxy de seguridad o tambien tiene un proveedor de internet extranjero.",
+      "El usuario está usando una VPN que lo saca de la región permitida."
+    ],
+    
+    "solutions": [
+      "Verificar en el perfil del usuario o cajero que su 'País de facturación' sea correcto.",
+      "Pedir al usuario que deshabilite cualquier VPN.",
+      "Pedirle que intente usar una red de internet del país (México)."
+    ],
+    "tags": ["gt-403", "country", "region", "bloqueo", "login", "403", "vpn"]
+  },
+    {
+    "id": "e-047",
+    "type": "error",
+    "code": 403,
+    "title": "DioError [bad response]: The request returned an invalid status code of 403",
+    "imageUrl": "media/49.png",
+    "description": "Ocurre cuando el usuario intenta acceder desde una región no permitida.",
+    "causes": [
+      "Configuración regional incorrecta en el perfil del usuario o cajero.",
+      "Restricción de acceso por país (Bloqueo de IP).",
+      "El usuario cuenta con un proxy de seguridad o tambien tiene un proveedor de internet extranjero.",
+      "El usuario está usando una VPN que lo saca de la región permitida."
+    ],
+    
+    "solutions": [
+      "Verificar en el perfil del usuario o cajero que su 'País de facturación' sea correcto.",
+      "Pedir al usuario que deshabilite cualquier VPN.",
+      "Pedir al usuario que elimine cache de su APP o navegador y que tenga la versión de la app más reciente",
+      "Pedirle que intente usar una red de internet del país (México)."
+    ],
+    "tags": ["gt-403", "country", "bad response", "DioError", "region", "bloqueo", "login", "403", "vpn"]
+  },
+     {
+    "id": "e-049",
+    "type": "error",
+    "code": 104,
+    "title": "DioError [unknown]: null Error: SocketException: Connection reset by peer (OS Error: Connection reset by peer, errno=104), address=back.linntae.mx, port = 58278",
+    "imageUrl": "media/48.png",
+    "description": "Ocurre cuando el usuario no cuenta con buena conexión a internet.",
+    "causes": [
+      "El usuario no cuenta con buena conexión a internet o esta usando datos muy limitados",
+      "Conexión a internet muy inestable"
+  
+    ],
+    
+    "solutions": [
+      "Pedirle al usuario verificar su conexión a internet pueden pedirle que haga la prueba en fast.com para determinar su conexión"
+     
+    ],
+    "tags": ["gt-403", "SocketException", "Connection reset by peer", "OS Error", "Connection reset by peer", "errno=104", "address=back.linntae.mx", "port = 58278", "vpn"]
   },
   {
     "id": "e-031",
