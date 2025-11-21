@@ -294,8 +294,8 @@
     "imageUrl": "media/22.png",
     "description": "Fallo temporal en la comunicación con el proveedor del servicio.",
     "causes": [
-      "El usuario tiene una conexión a internet inestable.",
-      "Saturación temporal en los servidores del proveedor."
+      "Ese error es cuando por algún motivo no nos pudimos conectar con el proveedor para que nos dé respuesta ",
+      "Normalmente es cuando sucede que la recarga salió exitosa, pero a nosotros no nos da respuesta y termina saliendo ese"
     ],
     "solutions": [
       "Pedir al usuario que verifique su conexión a internet (datos o WiFi).",
@@ -326,16 +326,15 @@
     "type": "error",
     "code": 51,
     "title": "Bad Gateway (Error 51)",
-    "imageUrl": "media/36.png",
+    "imageUrl": "media/29.png",
     "description": "Error de comunicación entre nuestros servidores y los del proveedor.",
     "causes": [
       "El servidor del proveedor (gateway) está caído o no responde."
     ],
     "solutions": [
-      "Este es un error temporal del lado del proveedor.",
-      "Informar al cliente que el servicio del proveedor está fallando.",
-      "Sugerir que intente de nuevo en 15-30 minutos.",
-      "Escalar al operativo Linntae para más información y brindarle una respuesta al cliente"
+      "Esperar unos minutos y volver a intentar.",
+      "En dado caso que despues del tiempo esperado sigue permaneciendo error, como soporte, consultar con proveedor si la venta fue éxitosa o no"
+    
     ],
     "tags": ["bad", "gateway", "51", "servidor", "proveedor"]
   },
